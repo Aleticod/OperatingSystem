@@ -1,6 +1,6 @@
 // Nombre			: busquedaAutor.c
 // Proposito		: Administra un catalogo de libros
-// Autores			: A. Harvey Pfoccori y Marjori
+// Autores			: A. Harvey Pfoccori y Marjorie Rodriguez Casas
 // FCreacion		: 22/05/2022
 // FModif			: 24/05/2022
 
@@ -69,7 +69,7 @@ void mostrarMenu() {
 int main () {
 	// Variables
 	struct tLibro catalogo[tam];
-	char datos[21];
+	char datos[51];
 	char aux[2];
 	int opcion;
 	int i = 0;
