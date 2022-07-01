@@ -134,11 +134,11 @@ int main () {
     t1 = clock();
 
     // Mostrar el resultado
-    printf("\nEl valor promedio de los datos de array es  %f\n", *promedioElem);
-    printf("El valor maximo del los datos del array es  %d\n", maximoElem);
-    printf("El valor minimo del los datos del array es  %d\n", minimoElem);
+    printf("\nEl valor promedio de los datos de array es  %f\n\n", *promedioElem);
+    printf("El valor maximo del los datos del array es  %d\n\n", maximoElem);
+    printf("El valor minimo del los datos del array es  %d\n\n", minimoElem);
     double time = (double)(t1 - t0)/CLOCKS_PER_SEC;
-    printf("El tiempo demorado es %lf\n", time);
+    printf("El tiempo demorado es %lf milisegundos\n", time);
     // Salir
     return 0;
 }
