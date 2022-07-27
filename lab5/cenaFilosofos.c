@@ -86,7 +86,7 @@ void *filosofo(void *num) {
 		sleep(3);
 		// El filosofo toma los tenedores
 		tomarTenedor(*i);
-		sleep(3);}
+		sleep(3);
 		// El filosofo pone los tenedores
 		ponerTenedor(*i);
 	}
@@ -103,7 +103,7 @@ int main() {
 		sem_init(&S[i], 0, 0);
 
 	// Creamos los hilos para los 5 filosofos en estado pensando
-	for(i = 0; i < N ; i++)
+	for(i = 0; i < N ; i++) {
 		pthread_create(&thread_id[i], NULL, filosofo, &fil[i]);
 		printf("El filosofo %d esta penssando\n", i + 1);
 	}
