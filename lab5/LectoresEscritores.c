@@ -38,30 +38,20 @@ void *escritor(void *arg)
 	sem_wait(&mutex);	// Entrar en la región crítica
 
 	printf("\t\t\t\t\tEscribiendo... : \n");
-
+    sleep(5);
+    printf("\t\t\t\t\tActualizando...: \n");
 	sem_post(&mutex);	// Salir de la región crítica
 	sem_post(&vacio);	// Incrementar contador de ranuras vacías
     }
     pthread_exit(0);
 }
 
-void *actualizar(void *arg)
-{
-    while(1){
-    sleep(10);
-    printf("\t\t\tActualizando proceso... : \n");
-    sleep(6);
-    }
-    pthread_exit(0);
-    
-}
 
 int main()
 {
     // Declarar hilos
     pthread_t idlect; // Lector
     pthread_t idescr; // Escritor
-    pthread_t idact; // Actualizar
 
     // Inicializar semáforos
     sem_init(&lleno, 0, 0);	// Al inicio hay 0 elementos llenos
@@ -76,10 +66,8 @@ int main()
     // Crear hilos
     pthread_create(&idlect, NULL, lector, NULL);  // Lector
     pthread_create(&idescr, NULL, escritor, NULL);  // Escritor
-    pthread_create(&idact, NULL, actualizar, NULL);  // Actualizar
 
     // Terminar hilos
     pthread_join(idlect, NULL);
     pthread_join(idescr, NULL);
-    pthread_join(idact, NULL);
 }
