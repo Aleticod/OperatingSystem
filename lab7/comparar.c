@@ -104,12 +104,13 @@ int main(int argc,char **argv)
     }
 
     // En el caso que ambos tienen el mismo tamanio
-    for(i=0;i<bstat1.st_size;i++)
+    for(i=0; i<bstat1.st_size; i++) 
+    {
         if(*q++ != *p++)
         {
             break;
         }
-
+    }
     
     if(i != bstat1.st_size)
     {
@@ -120,6 +121,7 @@ int main(int argc,char **argv)
             printf("Los archivos son iguales \n");
     }
 
+    // Se eliminan las proyecciones
     munmap(ar1,bstat1.st_size);
     munmap(ar2,bstat2.st_size);
 

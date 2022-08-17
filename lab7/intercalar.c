@@ -3,7 +3,7 @@
 // Autor	    : Alex H. Pfoccori Quispe y Marjorie R. Rodriguez Casas
 // FCreacion	: 16/08/2022
 // Compilacion  : gcc intercalar.c -o intercalar.exe -Wall
-// Ejecucion    : ./intercalar.exe archivo1.txt archivo2.txt archResult.txt -lm
+// Ejecucion    : ./intercalar.exe archivo1.txt archivo2.txt archResult.txt
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -13,7 +13,6 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <math.h>
 
 int main(int argc,char **argv) 
 {
@@ -138,9 +137,9 @@ int main(int argc,char **argv)
     p2=or2;
     q=des;
 
-    int Aux = bstat1.st_size + bstat2.st_size;
+    // Intercalar lineas entre el archivo 1 y 2 y colocar en destino
     
-    while (contT < Aux)
+    while (contT < bstat1.st_size + bstat2.st_size)
     {   if (cont1 < bstat1.st_size) {
             while(*p1 !='\n') {
                 *q++ = *p1++;
@@ -155,13 +154,14 @@ int main(int argc,char **argv)
                 *q++ = *p2++;
                 cont2++;
             }
-            
+
             *q++=*p2++;
             cont2++;
         }
         contT = cont1 + cont2;
     }
 
+    // Se eliminan las proyecciones
     munmap(or1,bstat1.st_size);
     munmap(or2,bstat2.st_size);
     munmap(des,bstat1.st_size+bstat2.st_size);

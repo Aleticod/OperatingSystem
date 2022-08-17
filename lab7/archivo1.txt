@@ -1,1 +1,5 @@
-hola
+El archivo 1 y 2 son iguales.
+El archivo 1 y 2 son iguales.
+El archivo 1 y 2 son iguales.
+El archivo 1 y 2 son iguales.
+El archivo 1 y 2 son iguales.

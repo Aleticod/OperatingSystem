@@ -1,1 +1,3 @@
-prueba
+Este es el arhivo diferente.
+Este archivo esta en espanol.
+Tiene caracteres especiales.
