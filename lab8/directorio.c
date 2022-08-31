@@ -26,10 +26,11 @@ void mostrarMenu() {
 	puts("");
 }
 
-int main () {
+int main (int argc, char *argv[]) {
 
     //Variables
     FILE * ptr;
+    const char *nombreArchivo;
     char registro[50];
     char *ret = NULL;
     char nombre[20];
@@ -38,6 +39,15 @@ int main () {
 	int opcion;
     int count = 0;
 	char aux[2];
+
+    // Procesar y mostrar resultados
+    if(argc < 2) {
+        fprintf(stderr, "Uso del programa: %s <archivo> \n", argv[0]);
+        return 1;
+    }
+
+    // Pasamos el argumento a la constante FILE
+    nombreArchivo = argv[1];
 
 	do {
 		// Indicar que hacer al programa
@@ -72,7 +82,7 @@ int main () {
                 strcat(prDato, "\n");
 
                 // Apertura del archivo
-                ptr = fopen("mi-directorio.csv", "a+");
+                ptr = fopen(nombreArchivo, "a+");
 
                 if(ptr == NULL) {
                     fprintf(stderr, "El archivo no se creo correctamente");
@@ -90,7 +100,7 @@ int main () {
 
 			case 2:
                 // Apertura
-                ptr = fopen("mi-directorio.csv", "r");
+                ptr = fopen(nombreArchivo, "r");
                 if(!ptr) {
                     printf("No se ha podido abrir, no existe el archivo\n");
                     return 1;
@@ -114,7 +124,7 @@ int main () {
                 scanf("%[^\n]%*c", nombre);
 
                 // Apertura
-                ptr = fopen("mi-directorio.csv", "r");
+                ptr = fopen(nombreArchivo, "r");
                 if(!ptr) {
                     printf("No se ha podido abrir");
                     return 1;
@@ -130,7 +140,7 @@ int main () {
                         if(ret != NULL) {
                             printf("%s", registro);
                             count++;
-                            break;
+                            
                         }
                     }
                 } while(!feof(ptr));
@@ -148,7 +158,7 @@ int main () {
                 scanf("%[^\n]%*c", apellido);
 
                 // Apertura
-                ptr = fopen("mi-directorio.csv", "r");
+                ptr = fopen(nombreArchivo, "r");
                 if(!ptr) {
                     printf("No se ha podido abrir");
                     return 1;
@@ -164,7 +174,7 @@ int main () {
                         if(ret != NULL) {
                             printf("%s", registro);
                             count++;
-                            break;
+                            
                         }
                     }
                 } while(!feof(ptr));
